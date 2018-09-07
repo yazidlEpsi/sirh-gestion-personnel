@@ -1,6 +1,7 @@
 package dev.sgp.web;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +13,11 @@ public class ListerCollaborateursController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		resp.getWriter().write("yo la cladqzdsse");
+
 		String avecPhotoParam = req.getParameter("avecPhoto");
 		String departementParam = req.getParameter("departement");
-		resp.setContentType("text/html");
-		
-resp.getWriter().write("<h1>liste des collabos </h1>" +"<ul> "+ "<li> avec photo" + avecPhotoParam+"</li>"+ "<li> dep" + departementParam+"</li>"+"</ul>");
+		req.setAttribute("listeNoms", Arrays.asList("Robert", "Jean", "Hugues"));
+		req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
 	}
 	
 }
